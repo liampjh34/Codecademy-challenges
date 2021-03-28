@@ -40,12 +40,15 @@ for record in damages:
     converted_damages.append(standardise_damages(record))
 
 # write your construct hurricane dictionary function here:
+def make_hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, deaths):
+    zipped_list = zip(names, months, years, max_sustained_winds, areas_affected, deaths)
 
+    hurricane_dictionary = {}
+    for name, month, year, max_sustained_wind, areas_affected, deaths in zipped_list:
+        hurricane_dictionary.update({name: [month, year, max_sustained_wind, areas_affected, deaths]})
+    print(hurricane_dictionary)
 
-
-
-
-
+make_hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, deaths)
 
 # write your construct hurricane by year dictionary function here:
 
