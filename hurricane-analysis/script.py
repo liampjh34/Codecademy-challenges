@@ -20,12 +20,24 @@ damages = ['Damages not recorded', '100M', 'Damages not recorded', '40M', '27.9M
 deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,318,107,65,19325,51,124,17,1836,125,87,45,133,603,138,3057,74]
 
 # write your update damages function here:
+def standardise_damages(cost):
+        if cost == "Damages not recorded":
+            return "Damages not recorded"
+        elif cost[-1] == "M":
+            cost = cost[:-1]
+            cost = float(cost) * 1000000.0
+            return cost
+        elif cost[-1] == "B":
+            cost = cost[:-1]
+            cost = float(cost) * 1000000000.0
+            return cost
+        else:
+            print("Unexpected damages. Couldn't process.")
 
+converted_damages = []
 
-
-
-
-
+for record in damages:
+    converted_damages.append(standardise_damages(record))
 
 # write your construct hurricane dictionary function here:
 
