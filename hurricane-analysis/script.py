@@ -20,13 +20,17 @@ damages = ['Damages not recorded', '100M', 'Damages not recorded', '40M', '27.9M
 deaths = [90,4000,16,3103,179,184,408,682,5,1023,43,319,688,259,37,11,2068,269,318,107,65,19325,51,124,17,1836,125,87,45,133,603,138,3057,74]
 
 # write your update damages function here:
+#define function to standardise the damages, as the damages list is a mixture of no damages recorded, or figures in billions or millions.
+#in the future, may want to add an if statement to ensure the last character is a letter before converting the damages figure.
 def standardise_damages(cost):
         if cost == "Damages not recorded":
             return "Damages not recorded"
+        #convert to millions if the damages figure ends in 'M'
         elif cost[-1] == "M":
             cost = cost[:-1]
             cost = float(cost) * 1000000.0
             return cost
+        #convert to billions if the damages figure ends in 'B'
         elif cost[-1] == "B":
             cost = cost[:-1]
             cost = float(cost) * 1000000000.0
@@ -34,19 +38,23 @@ def standardise_damages(cost):
         else:
             print("Unexpected damages. Couldn't process.")
 
+#define a new list for the converted damages
 converted_damages = []
 
+#add the converted damages to the new list
 for record in damages:
     converted_damages.append(standardise_damages(record))
 
 # write your construct hurricane dictionary function here:
+#define a function to create a dictionary of hurricane data fields
+#zip the data fields together
 def make_hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, deaths):
     zipped_list = zip(names, months, years, max_sustained_winds, areas_affected, deaths)
 
+#for each record in the zipped list, create a dictionary where the key = hurricane's name
     hurricane_dictionary = {}
     for name, month, year, max_sustained_wind, areas_affected, deaths in zipped_list:
         hurricane_dictionary.update({name: [month, year, max_sustained_wind, areas_affected, deaths]})
-    print(hurricane_dictionary)
 
 make_hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, deaths)
 
