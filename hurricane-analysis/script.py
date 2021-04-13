@@ -55,16 +55,26 @@ def make_hurricane_dictionary(names, months, years, max_sustained_winds, areas_a
     hurricane_dictionary = {}
     for name, month, year, max_sustained_wind, areas_affected, deaths in zipped_list:
         hurricane_dictionary.update({name: [month, year, max_sustained_wind, areas_affected, deaths]})
+    return(hurricane_dictionary)
 
-make_hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, deaths)
+cane_dict = make_hurricane_dictionary(names, months, years, max_sustained_winds, areas_affected, deaths)
 
 # write your construct hurricane by year dictionary function here:
+def convert_cane_dictionary_to_years(dictionary):
+    #define an iterable list to cycle through the values in hurricanes dictionary
+    cane_list = 0
+    #identify the first hurricane in the dictionary
+    #current_cane = list(dictionary.keys())
+    #current_cane = current_cane[cane_list]
+
+    items = dictionary.items()
+    print(items)
+
+    current_year = 0
 
 
 
-
-
-
+convert_cane_dictionary_to_years(cane_dict)
 
 # write your count affected areas function here:
 
